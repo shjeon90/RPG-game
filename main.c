@@ -48,6 +48,14 @@ int main() {
 
 			printf("Hit the monster with damage %d.\n", damage);
 			monster_hp -= damage;
+
+			int cntatt = rand() % 2;
+			if (monster_hp > 0 && cntatt) {
+				printf("Watch out! Monster's counterattack!\n");
+				damage = monster_att - player_def;
+				player_hp -= damage;
+				printf("Got damage %d from the mosnter.\n", damage);
+			}
 		}
 		else if (choice == 2) {
 			int damage = monster_att - player_def;
@@ -57,6 +65,14 @@ int main() {
 
 			printf("Got damage %d from the monster.\n", damage);
 			player_hp -= damage;
+
+			int cntatt = rand() % 2;
+			if (player_hp > 0 && cntatt) {
+				printf("Let's counterattack.\n");
+				damage = player_att - monster_def;
+				monster_hp -= damage;
+				printf("Hit the monster with damage %d.\n", damage);
+			}
 		}
 		else if (choice == 3) {
 			printf("Bye bye!\n");
