@@ -1,42 +1,25 @@
 /*
 - Author: Seungho Jeon
-- Data: 22.10.06
+- Data: 22.10.20
 - Description: Basic RGP game
 - Patch note:
-	1. function
+	1. introducing pointer variables.
 */
 #include "game.h"
 
 int main() {
-	srand(time(NULL));
+	int player_hp;
+	int player_att;
+	int player_def;
 
-	while (1) {
-		print_status(player_hp, player_att, player_def,
-			monster_hp, monster_att, monster_def);
+	int monster_hp;
+	int monster_att;
+	int monster_def;
 
-		int choice = print_menu();
-
-		if (choice == 1) attack();
-		else if (choice == 2) defense();
-		else if (choice == 3) {
-			printf("Bye bye!\n");
-			break;
-		}
-		else {
-			printf("Wrong input\n");
-			continue;
-		}
-
-		if (player_hp <= 0) {
-			printf("You loose.\n");
-			break;
-		}
-		else if (monster_hp <= 0) {
-			printf("You won.\n");
-			break;
-		}
-	}
+	init_game(&player_hp, &player_att, &player_def, 
+		&monster_hp, &monster_att, &monster_def);
+	run_game(&player_hp, &player_att, &player_def,
+		&monster_hp, &monster_att, &monster_def);
 
 	return 0;
 }
-
